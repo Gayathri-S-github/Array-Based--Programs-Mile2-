@@ -1,0 +1,52 @@
+/*          **********MostFrequentlyOccurringDigit*************
+If the series of input numbers are [1237,262,666,140]
+we noticed that,
+0 occurs 1 time
+1 occurs 2 time
+2 occurs 3 time
+3 occurs 1 time
+4 occurs 1 time
+5 occurs 0 time
+6 occurs 4 time
+7 occurs 1 time
+8 occurs 0 time
+9 occurs 0 time
+
+We observe that
+  - 4 is the highest frequency in this series
+  - 6 is the digit that occurs 4 times.
+  So the most occuring digit in this series is 6.
+  If more than one number occurs maximum same no of time means return the maximum no.Example if 2 and 4 are ocurring 6 times means, return 4.
+  */
+
+import java.io.*;
+import  java.util.*;
+
+// Read only region start
+class MostFrequentlyOccurringDigit {
+
+	public int mostFrequentlyOccurringDigit(int[] input1,int input2){
+		// Read only region end
+		StringBuilder input = new StringBuilder();
+		for (int ip : input1) input.append(ip);
+
+		int[] freq = new int[10];
+
+				for (int j = 0; j < input.length(); j++) {
+			freq[Integer.parseInt(String.valueOf(input.charAt(j)))]++;
+		}
+
+        	int maxFreqIndex = 0;
+		int maxFreq = 0;
+		
+		for (int i = 9; i >= 0; i--) {
+			if (freq[i] > maxFreq) {
+				maxFreqIndex = i;
+				maxFreq = freq[i];
+			}
+		}
+		
+		
+		return maxFreqIndex;
+	}
+}
